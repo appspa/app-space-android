@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 xuexiangjys(xuexiangjys@163.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <!--  更新界面使用到的内容，界面国际化需要配置这些内容  -->
+    <string name="xupdate_lab_update">升级</string>
+    <string name="xupdate_lab_background_update">后台更新</string>
+    <string name="xupdate_lab_install">安装</string>
+    <string name="xupdate_lab_ignore">忽略此版本</string>
+    <string name="xupdate_tip_permissions_reject">请授权访问存储空间权限，否则App无法更新！</string>
+    <string name="xupdate_connecting_service">正在连接服务器…</string>
+    <string name="xupdate_start_download">开始下载</string>
+    <string name="xupdate_download_complete">下载完成，请点击安装</string>
+    <string name="xupdate_lab_ready_update">是否升级到%s版本？</string>
+    <string name="xupdate_lab_new_version_size">新版本大小：</string>
+    <string name="xupdate_lab_downloading">正在下载：</string>
+    <string name="xupdate_tip_download_url_error">新版本下载路径错误</string>
+
+    <!--  更新错误信息  -->
+    <string name="xupdate_error_install_failed">安装APK失败！</string>
+    <string name="xupdate_error_download_permission_denied">无法下载：存储权限申请被拒绝！</string>
+    <string name="xupdate_error_download_failed">下载失败!</string>
+    <string name="xupdate_error_prompt_activity_destroy">提示失败：activity已被销毁！</string>
+    <string name="xupdate_error_prompt_unknown">提示失败：未知错误！</string>
+    <string name="xupdate_error_check_apk_cache_dir_empty">更新失败：apk的下载缓存目录为空！</string>
+    <string name="xupdate_error_check_ignored_version">更新失败：已经被忽略的版本！</string>
+    <string name="xupdate_error_check_parse">查询失败：解析Json错误！</string>
+    <string name="xupdate_error_check_json_empty">查询失败：Json为空！</string>
+    <string name="xupdate_error_check_no_new_version">已是最新版本！</string>
+    <string name="xupdate_error_check_updating">程序正在进行版本更新！</string>
+    <string name="xupdate_error_check_no_network">查询失败：没有网络！</string>
+    <string name="xupdate_error_check_no_wifi">查询失败：没有WIFI！</string>
+    <string name="xupdate_error_check_net_request">查询失败：网络请求错误！</string>
+
+</resources>

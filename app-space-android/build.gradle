@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+//apply plugin: 'img-optimizer'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion build_versions.target_sdk
+
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly deps.androidx.appcompat
+}
+
+apply from: "../JitPackUpload.gradle"

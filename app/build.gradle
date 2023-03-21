@@ -1,0 +1,98 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.xuexiang.xaop' //引用xaop插件
+apply plugin: 'img-optimizer'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        applicationId "com.xuexiang.xupdatedemo"
+        minSdkVersion 14
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    if (project.hasProperty("RELEASE_STORE_FILE")) {
+        signingConfigs {
+            release {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword app_release.storePassword
+                keyAlias app_release.keyAlias
+                keyPassword app_release.keyPassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (project.hasProperty("RELEASE_STORE_FILE")) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    if (project.hasProperty("RELEASE_STORE_FILE")) {
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                if (variant.buildType.name.equals('release')) {
+                    outputFileName = "xupdate_demo_${defaultConfig.versionName}.apk"
+                }
+            }
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    configurations.all {
+        resolutionStrategy.force deps.okhttp3
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation deps.androidx.appcompat
+    testImplementation deps.junit
+    androidTestImplementation deps.runner
+    androidTestImplementation deps.espresso.core
+    implementation project(':app-space-android')
+
+//    implementation 'com.github.xuexiangjys:XUpdate:2.1.3'
+
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:2.0.0'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:2.0.0'
+    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.1.0'  //添加依赖
+
+    //XPage
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.2.0'
+    annotationProcessor 'com.github.xuexiangjys.XPage:xpage-compiler:3.2.0'
+    //butterknife的sdk
+    implementation deps.butterknife.runtime
+    annotationProcessor deps.butterknife.compiler
+    //如果开启了内存泄漏监测leak,就需要加上这个依赖
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
+
+    //网络请求的实现一
+    implementation 'com.zhy:okhttputils:2.6.2'
+
+    //网络请求的实现二
+    implementation 'com.github.xuexiangjys:XHttp2:2.0.4'
+    implementation deps.gson
+    implementation deps.okhttp3
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+}
