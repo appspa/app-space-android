@@ -8,12 +8,12 @@ on:
     types: [published]
   push:
     branches:
-      - release
+      - main
     tags:
       - '1.*'
   pull_request:
     branches:
-      - release
+      - main
 jobs:
   build:
 
