@@ -10,7 +10,7 @@ Note: In this file, do not use the hard wrap in the middle of a sentence for com
 
 ## [Unreleased]
 
-## [1.1.1] - 2023-03-22
+## [1.0.0] - 2023-03-22
 
-- 初步版本 简单实现 
+- 初步版本 简单实现  
 
