@@ -1,16 +1,12 @@
 name: Release
-
+permissions:
+  contents: write
 on:
   release:
-    types: [ published ]
+    types: [created]
   push:
-    branches:
-      - release
     tags:
       - v[0-9]+.*
-    pull_request:
-      branches:
-      - release
 jobs:
   create-release:
     runs-on: ubuntu-latest
@@ -20,7 +16,6 @@ jobs:
         with:
           # (optional) Path to changelog.
           changelog: CHANGELOG.md
-        env:
-          # (required) GitHub token for creating GitHub Releases.
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          branch: main
+          token: ${{ secrets.GITHUB_TOKEN }}
 
