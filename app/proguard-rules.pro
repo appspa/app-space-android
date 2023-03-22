@@ -209,7 +209,7 @@
 -keep class * implements com.xuexiang.xrouter.facade.template.IProvider
 
 # xupdate
--keep class com.appspace.update.entity.** { *; }
+-keep class com.appspa.update.entity.** { *; }
 -keep class com.xuexiang.xupdatedemo.entity.** { *; }
 
 #XHttp2

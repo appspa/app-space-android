@@ -69,7 +69,7 @@ dependencies {
     testImplementation deps.junit
     androidTestImplementation deps.runner
     androidTestImplementation deps.espresso.core
-    implementation project(':app-space-android')
+    implementation project(':app-space-update')
 
 //    implementation 'com.github.xuexiangjys:XUpdate:2.1.3'
 

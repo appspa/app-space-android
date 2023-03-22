@@ -1,1 +1,1 @@
-include ':app', ':app-space-android'
+include ':app', ':app-space-update'
