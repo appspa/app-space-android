@@ -6,7 +6,8 @@ on:
     types: [created]
   push:
     tags:
-      - v[0-9]+.*
+      - '*'
+#      - v[0-9]+.*
 jobs:
   create-release:
     runs-on: ubuntu-latest
