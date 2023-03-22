@@ -32,21 +32,25 @@ public class CustomResult implements Serializable {
 
     public static class VersionInfo implements Serializable {
 
-        public boolean active;
-
-        public String packageHash;
-
-        public String updateMode;
-
-
+        //是否有更新
+        public boolean hasUpdate;
+        //是否强制更新
+        public boolean isForce;
+        //是否可忽略
+        public boolean isIgnorable;
+        //是否静默下载
+        public boolean isSilent;
+        //md5用户文件校验
+        public String md5;
+        //版本code
         public int versionCode;
-
+        //版本名称
         public String versionName;
-
+        //更新日志
         public String changeLog;
-
+        //下载Url
         public String downloadUrl;
-
+        //文件大小
         public long size;
 
     }

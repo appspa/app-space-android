@@ -32,19 +32,19 @@ import com.xuexiang.xutil.net.JsonUtil;
  */
 public class CustomUpdateParser implements IUpdateParser {
     @Override
-    public com.appspa.update.entity.UpdateEntity parseJson(String json) throws Exception {
+    public UpdateEntity parseJson(String json) throws Exception {
         return getParseResult(json);
     }
 
-    private com.appspa.update.entity.UpdateEntity getParseResult(String json) {
+    private UpdateEntity getParseResult(String json) {
         CustomResult result = JsonUtil.fromJson(json, CustomResult.class);
         if (result != null && result.success && result.data != null) {
             CustomResult.VersionInfo data = result.data;
-            return new com.appspa.update.entity.UpdateEntity()
-                    .setHasUpdate(data.active)
-                    .setMd5(data.packageHash)
-                    .setForce("force".equals(data.updateMode))
-                    .setIsIgnorable(!"force".equals(data.updateMode))
+            return new UpdateEntity()
+                    .setHasUpdate(true)
+                    .setMd5(data.md5)
+                    .setForce(data.isForce)
+                    .setIsIgnorable(data.isIgnorable)
                     .setVersionCode(data.versionCode)
                     .setVersionName(data.versionName)
                     .setUpdateContent(data.changeLog)

@@ -1,6 +1,7 @@
 # This workflow will build a Java project with Gradle
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
-
+# https://blog.csdn.net/xiangang12202/article/details/122594984
+# https://github.com/appspa/app-space-android/suites/11723509381/artifacts/610342370
 name: Android CI
 
 on:
@@ -10,7 +11,7 @@ on:
     branches:
       - main
     tags:
-      - '1.*'
+      - '*'
   pull_request:
     branches:
       - main
@@ -35,6 +36,8 @@ jobs:
           echo "开始进行release构建"
           chmod +x gradlew
           ./gradlew app:assembleRelease
+#      - name: Upload apk to pgyer.com
+#         run: find ${{ github.workspace }}/app/build/outputs/apk/release/ -name "*.apk*" -type f -exec curl -F "file=@{}" -F "uKey=${{ secrets.PGYER_UKEY }}" -F "_api_key=${{ secrets.PGYER_API_KEY }}" https://upload.pgyer.com/apiv1/app/upload  \;
       - name : upload apk
         uses: actions/upload-artifact@master
         if: always()
