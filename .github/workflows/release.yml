@@ -16,6 +16,6 @@ jobs:
         with:
           # (optional) Path to changelog.
           changelog: CHANGELOG.md
-#          branch: main
+          branch: main
           token: ${{ secrets.GITHUB_TOKEN }}
 
