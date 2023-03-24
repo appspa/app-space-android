@@ -40,15 +40,18 @@ import com.appspa.update.R;
 import com.appspa.update._AppSpace;
 import com.appspa.update.entity.DownloadEntity;
 import com.appspa.update.entity.UpdateEntity;
+import com.appspa.update.entity.UpdateError;
 import com.appspa.update.logs.UpdateLog;
 import com.appspa.update.proxy.IUpdateHttpService;
-import com.appspa.update.utils.ApkInstallUtils;
+import com.appspa.update.utils.ApkUtils;
 import com.appspa.update.utils.FileUtils;
+import com.appspa.update.utils.PatchUtils;
 import com.appspa.update.utils.UpdateUtils;
 
 import java.io.File;
 
 import static com.appspa.update.entity.UpdateError.ERROR.DOWNLOAD_FAILED;
+import static com.appspa.update.entity.UpdateError.ERROR.FAIL_PATCH;
 
 /**
  * APK下载服务
@@ -62,8 +65,8 @@ public class DownloadService extends Service {
 
     private static boolean sIsRunning = false;
 
-    private static final String CHANNEL_ID = "xupdate_channel_id";
-    private static final CharSequence CHANNEL_NAME = "xupdate_channel_name";
+    private static final String CHANNEL_ID = "space_channel_id";
+    private static final CharSequence CHANNEL_NAME = "space_channel_name";
 
     private NotificationManager mNotificationManager;
     private NotificationCompat.Builder mBuilder;
@@ -182,9 +185,9 @@ public class DownloadService extends Service {
 
     private NotificationCompat.Builder getNotificationBuilder() {
         return new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle(getString(R.string.xupdate_start_download))
-                .setContentText(getString(R.string.xupdate_connecting_service))
-                .setSmallIcon(R.drawable.xupdate_icon_app_update)
+                .setContentTitle(getString(R.string.space_start_download))
+                .setContentText(getString(R.string.space_connecting_service))
+                .setSmallIcon(R.drawable.spa_icon_app_update)
                 .setLargeIcon(UpdateUtils.drawable2Bitmap(UpdateUtils.getAppIcon(DownloadService.this)))
                 .setOngoing(true)
                 .setAutoCancel(true)
@@ -226,7 +229,7 @@ public class DownloadService extends Service {
                 mFileDownloadCallBack = null;
             }
             if (mUpdateEntity.getIUpdateHttpService() != null) {
-                mUpdateEntity.getIUpdateHttpService().cancelDownload(mUpdateEntity.getDownloadUrl());
+                mUpdateEntity.getIUpdateHttpService().cancelDownload(mUpdateEntity.getCurDownloadEntity().getDownloadUrl());
             } else {
                 UpdateLog.e("cancelDownload failed, mUpdateEntity.getIUpdateHttpService() is null!");
             }
@@ -247,15 +250,16 @@ public class DownloadService extends Service {
      * 下载模块
      */
     private void startDownload(@NonNull UpdateEntity updateEntity, @NonNull FileDownloadCallBack fileDownloadCallBack) {
-        String apkUrl = updateEntity.getDownloadUrl();
+        DownloadEntity downLoadEntity = updateEntity.getCurDownloadEntity();
+        String apkUrl = downLoadEntity.getDownloadUrl();
         if (TextUtils.isEmpty(apkUrl)) {
-            String contentText = getString(R.string.xupdate_tip_download_url_error);
+            String contentText = getString(R.string.space_tip_download_url_error);
             stop(contentText);
             return;
         }
-        String apkName = UpdateUtils.getApkNameByDownloadUrl(apkUrl);
+        String apkName = UpdateUtils.getFileNameByDownloadUrl(apkUrl);
 
-        File apkCacheDir = FileUtils.getFileByPath(updateEntity.getApkCacheDir());
+        File apkCacheDir = FileUtils.getFileByPath(updateEntity.getCacheDir());
         if (apkCacheDir == null) {
             apkCacheDir = UpdateUtils.getDefaultDiskCacheDir();
         }
@@ -348,9 +352,8 @@ public class DownloadService extends Service {
             //做一下判断，防止自回调过于频繁，造成更新通知栏进度过于频繁，而出现卡顿的问题。
             if (canRefreshProgress(rate)) {
                 dispatchOnProgress(progress, total);
-
                 if (mBuilder != null) {
-                    mBuilder.setContentTitle(getString(R.string.xupdate_lab_downloading) + UpdateUtils.getAppName(DownloadService.this))
+                    mBuilder.setContentTitle(getString(R.string.space_lab_downloading) + UpdateUtils.getAppName(DownloadService.this))
                             .setContentText(rate + "%")
                             .setProgress(100, rate, false)
                             .setWhen(System.currentTimeMillis());
@@ -379,7 +382,6 @@ public class DownloadService extends Service {
             }
         }
 
-
         private void dispatchOnProgress(final float progress, final long total) {
             if (UpdateUtils.isMainThread()) {
                 if (mOnFileDownloadListener != null) {
@@ -399,29 +401,53 @@ public class DownloadService extends Service {
 
         @Override
         public void onSuccess(final File file) {
+            File apkFile;
+            if (mDownloadEntity != null && mDownloadEntity.isPatch()) {
+                if (!mDownloadEntity.isFileValid(file)) {
+                    _AppSpace.onUpdateError(UpdateError.ERROR.FAIL_OLD_MD5, "Apk file verify failed, please check whether the MD5 value you set is correct！");
+                    return;
+                }
+                String newApkPath = file.getAbsolutePath().replace(".patch", ".apk");
+                long currentTime = System.currentTimeMillis();
+                int result = patchApk(DownloadService.this, file, newApkPath);
+                UpdateLog.d("InstallApk patchApk time" + (System.currentTimeMillis() - currentTime ));
+                if (result == 0) {
+                    apkFile = new File(newApkPath);
+                }else {
+                    onError(FAIL_PATCH, new Throwable("patch apk error"));
+                    return;
+                }
+            }else {
+                apkFile = file;
+            }
             if (UpdateUtils.isMainThread()) {
-                handleOnSuccess(file);
+                handleOnSuccess(apkFile);
             } else {
                 mMainHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        handleOnSuccess(file);
+                        handleOnSuccess(apkFile);
                     }
                 });
             }
+        }
+
+        private int patchApk(Context context, File patchFile, String newAPKPath) {
+            String oldApkSource = ApkUtils.getSourceApkPath(context, context.getPackageName());
+            return PatchUtils.patch(oldApkSource, newAPKPath, patchFile.getAbsolutePath());
         }
 
         private void handleOnSuccess(File file) {
             if (mIsCancel) {
                 return;
             }
-
             if (mOnFileDownloadListener != null) {
                 if (!mOnFileDownloadListener.onCompleted(file)) {
                     close();
                     return;
                 }
             }
+
             UpdateLog.d("更新文件下载完成, 文件路径:" + file.getAbsolutePath());
             try {
                 if (UpdateUtils.isAppOnForeground(DownloadService.this)) {
@@ -445,11 +471,14 @@ public class DownloadService extends Service {
 
         @Override
         public void onError(Throwable throwable) {
+            onError(DOWNLOAD_FAILED, throwable);
+        }
+
+        public void onError(int code,Throwable throwable) {
             if (mIsCancel) {
                 return;
             }
-
-            _AppSpace.onUpdateError(DOWNLOAD_FAILED, throwable != null ? throwable.getMessage() : "unknown error!");
+            _AppSpace.onUpdateError(code, throwable != null ? throwable.getMessage() : "unknown error!");
             //App前台运行
             dispatchOnError(throwable);
             try {
@@ -490,14 +519,14 @@ public class DownloadService extends Service {
     private void showDownloadCompleteNotification(File file) {
         //App后台运行
         //更新参数,注意flags要使用FLAG_UPDATE_CURRENT
-        Intent installAppIntent = ApkInstallUtils.getInstallAppIntent(file);
+        Intent installAppIntent = ApkUtils.getInstallAppIntent(file);
         PendingIntent contentIntent = PendingIntent.getActivity(DownloadService.this, 0, installAppIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         if (mBuilder == null) {
             mBuilder = getNotificationBuilder();
         }
         mBuilder.setContentIntent(contentIntent)
                 .setContentTitle(UpdateUtils.getAppName(DownloadService.this))
-                .setContentText(getString(R.string.xupdate_download_complete))
+                .setContentText(getString(R.string.space_download_complete))
                 .setProgress(0, 0, false)
                 //                        .setAutoCancel(true)
                 .setDefaults((Notification.DEFAULT_ALL));

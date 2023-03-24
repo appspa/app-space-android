@@ -24,7 +24,7 @@ import com.appspa.update._AppSpace;
 import com.appspa.update.entity.DownloadEntity;
 import com.appspa.update.entity.UpdateError;
 import com.appspa.update.listener.OnInstallListener;
-import com.appspa.update.utils.ApkInstallUtils;
+import com.appspa.update.utils.ApkUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,7 +55,7 @@ public class DefaultInstallListener implements OnInstallListener {
      * @return apk文件是否有效
      */
     protected boolean checkApkFile(DownloadEntity downloadEntity, @NonNull File apkFile) {
-        return downloadEntity != null && downloadEntity.isApkFileValid(apkFile);
+        return downloadEntity != null && _AppSpace.isFileValid(downloadEntity.getWholeMd5(), apkFile);
     }
 
     /**
@@ -67,7 +67,7 @@ public class DefaultInstallListener implements OnInstallListener {
      */
     protected boolean installApkFile(Context context, File apkFile) {
         try {
-            return ApkInstallUtils.install(context, apkFile);
+            return ApkUtils.install(context, apkFile);
         } catch (IOException e) {
             _AppSpace.onUpdateError(UpdateError.ERROR.INSTALL_FAILED, "An error occurred while install apk:" + e.getMessage());
         }

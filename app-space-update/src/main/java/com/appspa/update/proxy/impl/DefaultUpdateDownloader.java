@@ -69,19 +69,9 @@ public class DefaultUpdateDownloader implements IUpdateDownloader {
      * @return 地址是否是下载地址
      */
     protected boolean isDownloadUrl(@NonNull UpdateEntity updateEntity) {
-        return isApkDownloadUrl(updateEntity) || !isStaticHtmlUrl(updateEntity);
+        return !isStaticHtmlUrl(updateEntity);
     }
 
-    /**
-     * 地址是否是apk的下载地址
-     *
-     * @param updateEntity 版本更新信息
-     * @return 地址是否是apk的下载地址
-     */
-    protected boolean isApkDownloadUrl(@NonNull UpdateEntity updateEntity) {
-        String downloadUrl = updateEntity.getDownloadUrl();
-        return !TextUtils.isEmpty(downloadUrl) && downloadUrl.substring(downloadUrl.lastIndexOf("/") + 1).endsWith(".apk");
-    }
 
     /**
      * 地址是否是静态网页
@@ -90,7 +80,7 @@ public class DefaultUpdateDownloader implements IUpdateDownloader {
      * @return 地址是否是静态网页
      */
     protected boolean isStaticHtmlUrl(@NonNull UpdateEntity updateEntity) {
-        String downloadUrl = updateEntity.getDownloadUrl();
+        String downloadUrl = updateEntity.getCurDownloadEntity().getDownloadUrl();
         if (TextUtils.isEmpty(downloadUrl)) {
             return false;
         }
@@ -127,7 +117,7 @@ public class DefaultUpdateDownloader implements IUpdateDownloader {
      * @param downloadListener 监听回调
      */
     protected void startOpenHtml(@NonNull UpdateEntity updateEntity, @Nullable OnFileDownloadListener downloadListener) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(updateEntity.getDownloadUrl()));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(updateEntity.getCurDownloadEntity().getDownloadUrl()));
         boolean result = UpdateUtils.startActivity(intent);
         if (downloadListener != null) {
             if (result) {

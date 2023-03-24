@@ -122,7 +122,7 @@ public class UpdateDialogActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.xupdate_layout_update_prompter);
+        setContentView(R.layout.spa_layout_update_prompter);
         _AppSpace.setIsPrompterShow(getUrl(), true);
         initView();
         initData();
@@ -201,7 +201,7 @@ public class UpdateDialogActivity extends AppCompatActivity implements View.OnCl
         String updateInfo = UpdateUtils.getDisplayUpdateInfo(this, updateEntity);
         // 更新内容
         mTvUpdateInfo.setText(updateInfo);
-        mTvTitle.setText(String.format(getString(R.string.xupdate_lab_ready_update), newVersion));
+        mTvTitle.setText(String.format(getString(R.string.space_lab_ready_update), newVersion));
 
         // 刷新升级按钮显示
         refreshUpdateButton();
@@ -217,10 +217,10 @@ public class UpdateDialogActivity extends AppCompatActivity implements View.OnCl
      */
     private void initTheme(@ColorInt int themeColor, @DrawableRes int topResId, @ColorInt int buttonTextColor) {
         if (themeColor == -1) {
-            themeColor = ColorUtils.getColor(this, R.color.xupdate_default_theme_color);
+            themeColor = ColorUtils.getColor(this, R.color.space_default_theme_color);
         }
         if (topResId == -1) {
-            topResId = R.drawable.xupdate_bg_app_top;
+            topResId = R.drawable.spa_bg_app_top;
         }
         if (buttonTextColor == 0) {
             buttonTextColor = ColorUtils.isColorDark(themeColor) ? Color.WHITE : Color.BLACK;
@@ -425,7 +425,7 @@ public class UpdateDialogActivity extends AppCompatActivity implements View.OnCl
     private void showInstallButton() {
         mNumberProgressBar.setVisibility(View.GONE);
         mBtnBackgroundUpdate.setVisibility(View.GONE);
-        mBtnUpdate.setText(R.string.xupdate_lab_install);
+        mBtnUpdate.setText(R.string.space_lab_install);
         mBtnUpdate.setVisibility(View.VISIBLE);
         mBtnUpdate.setOnClickListener(this);
     }
@@ -436,7 +436,7 @@ public class UpdateDialogActivity extends AppCompatActivity implements View.OnCl
     private void showUpdateButton() {
         mNumberProgressBar.setVisibility(View.GONE);
         mBtnBackgroundUpdate.setVisibility(View.GONE);
-        mBtnUpdate.setText(R.string.xupdate_lab_update);
+        mBtnUpdate.setText(R.string.space_lab_update);
         mBtnUpdate.setVisibility(View.VISIBLE);
         mBtnUpdate.setOnClickListener(this);
     }

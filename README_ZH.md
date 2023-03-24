@@ -103,7 +103,7 @@ IUpdateProxy/XUpdate --- (update) ---> IUpdateChecker --->（请求服务器，�
                                                         ---> 用户点击（取消或忽略） ---> 结束
 ```
 
-[点击查看框架UML设计图](https://github.com/xuexiangjys/XUpdate/blob/master/img/xupdate_uml.png)
+[点击查看框架UML设计图](https://github.com/xuexiangjys/XUpdate/blob/master/img/space_uml.png)
 
 ---
 
@@ -111,27 +111,27 @@ IUpdateProxy/XUpdate --- (update) ---> IUpdateChecker --->（请求服务器，�
 
 * 默认版本更新
 
-![xupdate_default.png](./img/xupdate_default.png)
+![space_default.png](./img/space_default.png)
 
 * 后台更新
 
-![xupdate_background.png](./img/xupdate_background.png)
+![space_background.png](./img/space_background.png)
 
 * 强制版本更新
 
-![xupdate_force.png](./img/xupdate_force.png)
+![space_force.png](./img/space_force.png)
 
 * 可忽略版本更新
 
-![xupdate_ignore.png](./img/xupdate_ignore.png)
+![space_ignore.png](./img/space_ignore.png)
 
 * 自定义提示弹窗主题
 
-![xupdate_custom.png](./img/xupdate_custom.png)
+![space_custom.png](./img/space_custom.png)
 
 * 使用系统弹窗提示
 
-![xupdate_system.png](./img/xupdate_system.png)
+![space_system.png](./img/space_system.png)
 
 ### Demo更新后台服务
 
@@ -145,13 +145,13 @@ IUpdateProxy/XUpdate --- (update) ---> IUpdateChecker --->（请求服务器，�
 
 [![downloads](https://img.shields.io/badge/downloads-2.1M-blue.svg)](https://www.pgyer.com/xupdate)
 
-[![xupdate_download_pugongying.png](./img/download_pugongying.png)](https://www.pgyer.com/xupdate)
+[![space_download_pugongying.png](./img/download_pugongying.png)](https://www.pgyer.com/xupdate)
 
 #### Github下载
 
-[![downloads](https://img.shields.io/badge/downloads-2.1M-blue.svg)](https://github.com/xuexiangjys/XUpdate/blob/master/apk/xupdate_demo_1.0.apk?raw=true)
+[![downloads](https://img.shields.io/badge/downloads-2.1M-blue.svg)](https://github.com/xuexiangjys/XUpdate/blob/master/apk/space_demo_1.0.apk?raw=true)
 
-[![xupdate_download.png](./img/download.png)](https://github.com/xuexiangjys/XUpdate/blob/master/apk/xupdate_demo_1.0.apk?raw=true)
+[![space_download.png](./img/download.png)](https://github.com/xuexiangjys/XUpdate/blob/master/apk/space_demo_1.0.apk?raw=true)
 
 ---
 
@@ -261,8 +261,8 @@ mIsShowNotification | boolean | false | 是否在通知栏上显示下载进度
 
 字段名 | 类型 | 默认值 | 备注
 :-|:-:|:-:|:-
-mThemeColor | int | R.color.xupdate_default_theme_color | 主题色（进度条和按钮的背景色）
-mTopResId | int | R.drawable.xupdate_bg_app_top | 顶部背景图片资源id
+mThemeColor | int | R.color.space_default_theme_color | 主题色（进度条和按钮的背景色）
+mTopResId | int | R.drawable.space_bg_app_top | 顶部背景图片资源id
 mTopDrawableTag | String | "" | 顶部背景图片Drawable标识
 mButtonTextColor | int | 0 | 按钮文字颜色
 mSupportBackgroundUpdate | boolean | false | 是否支持后台更新
@@ -332,7 +332,7 @@ XUpdate.newBuild(getActivity())
   "VersionCode": 3,
   "VersionName": "1.0.2",
   "ModifyContent": "1、优化api接口。\r\n2、添加使用demo演示。\r\n3、新增自定义更新服务API接口。\r\n4、优化更新提示界面。",
-  "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUpdate/master/apk/xupdate_demo_1.0.2.apk",
+  "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUpdate/master/apk/space_demo_1.0.2.apk",
   "ApkSize": 2048,
   "ApkMd5": ""
 }
@@ -562,7 +562,7 @@ _XUpdate.startInstallApk(getContext(), FileUtils.getFileByPath(PathUtils.getFile
 
 由于作者水平有限, 目前只支持中文和英文两种语言的显示【默认语言是英语】。需要支持其他语言的，只需要在自己项目的`res`下新建对应的语言文件，进行多语言的翻译即可。
 
-需要翻译的详细内容参见 ***[xupdate_strings.xml](https://github.com/xuexiangjys/XUpdate/blob/master/xupdate-lib/src/main/res/values-zh-rCN/xupdate_strings.xml)*** 文件。
+需要翻译的详细内容参见 ***[space_strings.xml](https://github.com/xuexiangjys/XUpdate/blob/master/xupdate-lib/src/main/res/values-zh-rCN/space_strings.xml)*** 文件。
 
 什么？你还不会Android的多语言配置？建议你看一下这篇文章：[Android项目国际化多国语言适配](https://blog.csdn.net/qq_29769851/article/details/90606437)
 
@@ -572,7 +572,7 @@ _XUpdate.startInstallApk(getContext(), FileUtils.getFileByPath(PathUtils.getFile
 -keep class com.xuexiang.xupdate.entity.** { *; }
 
 //注意，如果你使用的是自定义Api解析器解析，还需要给你自定义Api实体配上混淆，如下是本demo中配置的自定义Api实体混淆规则：
--keep class com.xuexiang.xupdatedemo.entity.** { *; }
+-keep class com.appspa.demo.entity.** { *; }
 
 ```
 

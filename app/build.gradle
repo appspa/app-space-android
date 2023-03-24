@@ -7,7 +7,7 @@ android {
     buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        applicationId "com.xuexiang.xupdatedemo"
+        applicationId "com.appspa.demo"
         minSdkVersion 14
         targetSdkVersion build_versions.target_sdk
         versionCode 1
@@ -42,7 +42,7 @@ android {
         applicationVariants.all { variant ->
             variant.outputs.all {
                 if (variant.buildType.name.equals('release')) {
-                    outputFileName = "xupdate_demo_${defaultConfig.versionName}.apk"
+                    outputFileName = "space_demo_${defaultConfig.versionName}.apk"
                 }
             }
         }

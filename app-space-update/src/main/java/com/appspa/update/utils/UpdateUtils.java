@@ -57,8 +57,8 @@ import java.util.List;
  */
 public final class UpdateUtils {
 
-    private static final String IGNORE_VERSION = "xupdate_ignore_version";
-    private static final String PREFS_FILE = "xupdate_prefs";
+    private static final String IGNORE_VERSION = "space_ignore_version";
+    private static final String PREFS_FILE = "space_prefs";
 
     private static final String KEY_XUPDATE = "xupdate";
 
@@ -82,7 +82,7 @@ public final class UpdateUtils {
                 if (updateEntity.isIgnorable() && UpdateUtils.isIgnoreVersion(updateProxy.getContext(), updateEntity.getVersionName())) {
                     _AppSpace.onUpdateError(UpdateError.ERROR.CHECK_IGNORED_VERSION);
                     //校验apk下载缓存目录是否为空
-                } else if (TextUtils.isEmpty(updateEntity.getApkCacheDir())) {
+                } else if (TextUtils.isEmpty(updateEntity.getCacheDir())) {
                     _AppSpace.onUpdateError(UpdateError.ERROR.CHECK_APK_CACHE_DIR_EMPTY);
                 } else {
                     updateProxy.findNewVersion(updateEntity, updateProxy);
@@ -265,12 +265,12 @@ public final class UpdateUtils {
      */
     @NonNull
     public static String getDisplayUpdateInfo(Context context, @NonNull UpdateEntity updateEntity) {
-        String targetSize = byte2FitMemorySize(updateEntity.getSize() * 1024);
+        String targetSize = byte2FitMemorySize(updateEntity.getCurDownloadEntity().getSize());
         final String updateContent = updateEntity.getUpdateContent();
 
         String updateInfo = "";
         if (!TextUtils.isEmpty(targetSize)) {
-            updateInfo = context.getString(R.string.xupdate_lab_new_version_size) + targetSize + "\n";
+            updateInfo = context.getString(R.string.space_lab_new_version_size) + targetSize + "\n";
         }
         if (!TextUtils.isEmpty(updateContent)) {
             updateInfo += updateContent;
@@ -310,9 +310,10 @@ public final class UpdateUtils {
      */
     public static boolean isApkDownloaded(UpdateEntity updateEntity) {
         File appFile = getApkFileByUpdateEntity(updateEntity);
-        return !TextUtils.isEmpty(updateEntity.getMd5())
+        String md5 = updateEntity.getDownLoadEntity().getMd5();
+        return !TextUtils.isEmpty(md5)
                 && FileUtils.isFileExists(appFile)
-                && _AppSpace.isFileValid(updateEntity.getMd5(), appFile);
+                && _AppSpace.isFileValid(md5, appFile);
     }
 
     /**
@@ -322,8 +323,11 @@ public final class UpdateUtils {
      * @return
      */
     public static File getApkFileByUpdateEntity(UpdateEntity updateEntity) {
-        String appName = getApkNameByDownloadUrl(updateEntity.getDownloadUrl());
-        return new File(updateEntity.getApkCacheDir()
+        String appName = getFileNameByDownloadUrl(updateEntity.getCurDownloadEntity().getDownloadUrl());
+        if (appName != null && appName.endsWith(".patch")) {
+            appName = appName.replace(".patch", ".apk");
+        }
+        return new File(updateEntity.getCacheDir()
                 .concat(File.separator + updateEntity.getVersionName())
                 .concat(File.separator + appName));
     }
@@ -335,14 +339,14 @@ public final class UpdateUtils {
      * @return
      */
     @NonNull
-    public static String getApkNameByDownloadUrl(String downloadUrl) {
+    public static String getFileNameByDownloadUrl(String downloadUrl) {
         if (TextUtils.isEmpty(downloadUrl)) {
             return "temp_" + System.currentTimeMillis() + ".apk";
         } else {
             String appName = downloadUrl.substring(downloadUrl.lastIndexOf("/") + 1);
-            if (!appName.endsWith(".apk")) {
-                appName = "temp_" + System.currentTimeMillis() + ".apk";
-            }
+//            if (!appName.endsWith(".apk")) {
+//                appName = "temp_" + System.currentTimeMillis() + ".apk";
+//            }
             return appName;
         }
     }
@@ -376,7 +380,7 @@ public final class UpdateUtils {
      * @return
      */
     public static boolean isPrivateApkCacheDir(@NonNull UpdateEntity updateEntity) {
-        return FileUtils.isPrivatePath(AppSpace.getContext(), updateEntity.getApkCacheDir());
+        return FileUtils.isPrivatePath(AppSpace.getContext(), updateEntity.getCacheDir());
     }
 
     /**

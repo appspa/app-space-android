@@ -68,6 +68,10 @@ public class UpdateEntity implements Parcelable {
      * 下载信息实体
      */
     private DownloadEntity mDownloadEntity;
+    /**
+     * 增量包下载信息实体
+     */
+    private DownloadEntity mPatchDownloadEntity;
 
     //============升级行为============//
     /**
@@ -78,6 +82,11 @@ public class UpdateEntity implements Parcelable {
      * 是否下载完成后自动安装[默认是true]
      */
     private boolean mIsAutoInstall;
+
+    /**
+     * 文件下载的目录
+     */
+    private String mCacheDir;
 
     public UpdateEntity() {
         mVersionName = "unknown_version";
@@ -93,6 +102,7 @@ public class UpdateEntity implements Parcelable {
         mVersionName = in.readString();
         mUpdateContent = in.readString();
         mDownloadEntity = in.readParcelable(DownloadEntity.class.getClassLoader());
+        mPatchDownloadEntity = in.readParcelable(DownloadEntity.class.getClassLoader());
         mIsSilent = in.readByte() != 0;
         mIsAutoInstall = in.readByte() != 0;
     }
@@ -168,11 +178,16 @@ public class UpdateEntity implements Parcelable {
      * @param apkCacheDir
      * @return
      */
-    public UpdateEntity setApkCacheDir(String apkCacheDir) {
-        if (!TextUtils.isEmpty(apkCacheDir) && TextUtils.isEmpty(mDownloadEntity.getCacheDir())) {
-            mDownloadEntity.setCacheDir(apkCacheDir);
+    public UpdateEntity setCacheDir(String apkCacheDir) {
+        mCacheDir = apkCacheDir;
+        if (!TextUtils.isEmpty(apkCacheDir) && TextUtils.isEmpty(mCacheDir)) {
+            mCacheDir = apkCacheDir;
         }
         return this;
+    }
+
+    public String getCacheDir() {
+        return mCacheDir;
     }
 
     /**
@@ -188,6 +203,9 @@ public class UpdateEntity implements Parcelable {
             mIsAutoInstall = true;
             //自动模式下，默认下载进度条在通知栏显示
             mDownloadEntity.setShowNotification(true);
+            if (mPatchDownloadEntity != null) {
+                mPatchDownloadEntity.setShowNotification(true);
+            }
         }
         return this;
     }
@@ -200,6 +218,9 @@ public class UpdateEntity implements Parcelable {
      */
     public UpdateEntity setShowNotification(boolean showNotification) {
         mDownloadEntity.setShowNotification(showNotification);
+        if (mPatchDownloadEntity != null) {
+            mPatchDownloadEntity.setShowNotification(true);
+        }
         return this;
     }
 
@@ -230,45 +251,31 @@ public class UpdateEntity implements Parcelable {
         return this;
     }
 
-    public String getDownloadUrl() {
-        return mDownloadEntity.getDownloadUrl();
-    }
 
-    public UpdateEntity setDownloadUrl(String downloadUrl) {
-        mDownloadEntity.setDownloadUrl(downloadUrl);
-        return this;
-    }
-
-    public String getMd5() {
-        return mDownloadEntity.getMd5();
-    }
-
-    public UpdateEntity setMd5(String md5) {
-        mDownloadEntity.setMd5(md5);
-        return this;
-    }
-
-    public long getSize() {
-        return mDownloadEntity.getSize();
-    }
-
-    public UpdateEntity setSize(long size) {
-        mDownloadEntity.setSize(size);
-        return this;
-    }
-
-    public String getApkCacheDir() {
-        return mDownloadEntity.getCacheDir();
-    }
 
     public UpdateEntity setDownLoadEntity(@NonNull DownloadEntity downloadEntity) {
         mDownloadEntity = downloadEntity;
         return this;
     }
 
+    public UpdateEntity setPatchDownloadEntity(DownloadEntity mPatchDownloadEntity) {
+        this.mPatchDownloadEntity = mPatchDownloadEntity;
+        return this;
+    }
+
+    public boolean hasPatch(){
+        return mPatchDownloadEntity != null && mPatchDownloadEntity.getDownloadUrl() != null;
+    }
+    public DownloadEntity getPatchDownloadEntity() {
+        return mPatchDownloadEntity;
+    }
+
     @NonNull
     public DownloadEntity getDownLoadEntity() {
         return mDownloadEntity;
+    }
+    public DownloadEntity getCurDownloadEntity() {
+        return  this.hasPatch() ? getPatchDownloadEntity() : getDownLoadEntity();
     }
 
     //======内部变量，请勿设置=====//
@@ -295,6 +302,7 @@ public class UpdateEntity implements Parcelable {
                 ", mVersionName='" + mVersionName + '\'' +
                 ", mUpdateContent='" + mUpdateContent + '\'' +
                 ", mDownloadEntity=" + mDownloadEntity +
+                ", mPatchDownloadEntity=" + mPatchDownloadEntity +
                 ", mIsSilent=" + mIsSilent +
                 ", mIsAutoInstall=" + mIsAutoInstall +
                 ", mIUpdateHttpService=" + mIUpdateHttpService +
@@ -315,6 +323,7 @@ public class UpdateEntity implements Parcelable {
         dest.writeString(mVersionName);
         dest.writeString(mUpdateContent);
         dest.writeParcelable(mDownloadEntity, flags);
+        dest.writeParcelable(mPatchDownloadEntity, flags);
         dest.writeByte((byte) (mIsSilent ? 1 : 0));
         dest.writeByte((byte) (mIsAutoInstall ? 1 : 0));
     }

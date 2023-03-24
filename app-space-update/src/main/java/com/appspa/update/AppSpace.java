@@ -34,7 +34,7 @@ import com.appspa.update.proxy.IUpdateParser;
 import com.appspa.update.proxy.IUpdatePrompter;
 import com.appspa.update.proxy.impl.DefaultFileEncryptor;
 import com.appspa.update.proxy.impl.DefaultUpdatePrompter;
-import com.appspa.update.utils.ApkInstallUtils;
+import com.appspa.update.utils.ApkUtils;
 import com.appspa.update.listener.impl.DefaultInstallListener;
 import com.appspa.update.listener.impl.DefaultUpdateFailureListener;
 import com.appspa.update.proxy.impl.DefaultUpdateChecker;
@@ -72,6 +72,10 @@ public class AppSpace {
      * 是否是自动版本更新模式【无人干预,有版本更新直接下载、安装】
      */
     boolean mIsAutoMode;
+    /**
+     * 是否是增量更新模式
+     */
+    boolean mIsPatchMode;
     /**
      * 下载的apk文件缓存目录
      */
@@ -328,6 +332,18 @@ public class AppSpace {
     }
 
     /**
+     * 设置是否是增量模式模式
+     *
+     * @param isPatchMode 是否是增量模式
+     * @return this
+     */
+    public AppSpace isPatchMode(boolean isPatchMode) {
+        UpdateLog.d("设置全局是否是自动版本更新模式:" + isPatchMode);
+        mIsPatchMode = isPatchMode;
+        return this;
+    }
+
+    /**
      * 设置apk的缓存路径
      *
      * @param apkCacheDir apk的缓存路径
@@ -346,7 +362,7 @@ public class AppSpace {
      * @return this
      */
     public AppSpace supportSilentInstall(boolean supportSilentInstall) {
-        ApkInstallUtils.setSupportSilentInstall(supportSilentInstall);
+        ApkUtils.setSupportSilentInstall(supportSilentInstall);
         return this;
     }
 

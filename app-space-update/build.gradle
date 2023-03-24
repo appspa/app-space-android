@@ -8,15 +8,24 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion build_versions.target_sdk
-
         vectorDrawables.useSupportLibrary = true
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
     }
 
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }
-
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
 }
 
 dependencies {

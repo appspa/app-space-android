@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xuexiang.xupdatedemo">
+    package="com.appspa.demo">
 
     <application
-        android:name="com.appspa.xupdatedemo.App"
+        android:name=".App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.appspa.xupdatedemo.activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.appspa.xupdatedemo.activity.UpdateActivity" />
+        <activity android:name=".activity.UpdateActivity" />
     </application>
 
 </manifest>

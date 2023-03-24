@@ -210,7 +210,7 @@
 
 # xupdate
 -keep class com.appspa.update.entity.** { *; }
--keep class com.xuexiang.xupdatedemo.entity.** { *; }
+-keep class com.appspa.demo.entity.** { *; }
 
 #XHttp2
 -keep class com.xuexiang.xhttp2.model.** { *; }

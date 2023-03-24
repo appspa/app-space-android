@@ -19,6 +19,7 @@ package com.appspa.update.proxy.impl;
 import android.text.TextUtils;
 
 import com.appspa.update.AppSpace;
+import com.appspa.update.entity.DownloadEntity;
 import com.appspa.update.entity.UpdateEntity;
 import com.appspa.update.logs.UpdateLog;
 import com.appspa.update.utils.UpdateUtils;
@@ -67,13 +68,16 @@ public class DefaultUpdateParser extends AbstractUpdateParser {
                 } else if (updateStatus == APIConstant.HAVE_NEW_VERSION_IGNORE_UPDATE) {
                     updateEntity.setIsIgnorable(true);
                 }
+                DownloadEntity downloadEntity = new DownloadEntity();
+                downloadEntity.setMd5(jsonObject.optString(APIKeyUpper.APK_SIZE));
+                downloadEntity.setWholeMd5(jsonObject.optString(APIKeyUpper.APK_SIZE));
+                downloadEntity.setSize(jsonObject.optLong(APIKeyUpper.APK_MD5));
+                downloadEntity.setDownloadUrl(jsonObject.optString(APIKeyUpper.DOWNLOAD_URL));
                 updateEntity.setHasUpdate(true)
                         .setUpdateContent(jsonObject.getString(APIKeyUpper.MODIFY_CONTENT))
                         .setVersionCode(versionCode)
                         .setVersionName(versionName)
-                        .setDownloadUrl(jsonObject.getString(APIKeyUpper.DOWNLOAD_URL))
-                        .setSize(jsonObject.optLong(APIKeyUpper.APK_SIZE))
-                        .setMd5(jsonObject.optString(APIKeyUpper.APK_MD5));
+                        .setDownLoadEntity(downloadEntity);
             }
             return updateEntity;
         }
@@ -99,13 +103,16 @@ public class DefaultUpdateParser extends AbstractUpdateParser {
                 } else if (updateStatus == APIConstant.HAVE_NEW_VERSION_IGNORE_UPDATE) {
                     updateEntity.setIsIgnorable(true);
                 }
+                DownloadEntity downloadEntity = new DownloadEntity();
+                downloadEntity.setMd5(jsonObject.optString(APIKeyUpper.APK_SIZE));
+                downloadEntity.setWholeMd5(jsonObject.optString(APIKeyUpper.APK_SIZE));
+                downloadEntity.setSize(jsonObject.optLong(APIKeyUpper.APK_MD5));
+                downloadEntity.setDownloadUrl(jsonObject.optString(APIKeyUpper.DOWNLOAD_URL));
                 updateEntity.setHasUpdate(true)
                         .setUpdateContent(jsonObject.getString(APIKeyLower.MODIFY_CONTENT))
                         .setVersionCode(versionCode)
                         .setVersionName(versionName)
-                        .setDownloadUrl(jsonObject.getString(APIKeyLower.DOWNLOAD_URL))
-                        .setSize(jsonObject.optLong(APIKeyLower.APK_SIZE))
-                        .setMd5(jsonObject.optString(APIKeyLower.APK_MD5));
+                        .setDownLoadEntity(downloadEntity);
             }
             return updateEntity;
         }

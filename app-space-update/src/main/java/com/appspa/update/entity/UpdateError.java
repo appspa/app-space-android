@@ -109,6 +109,17 @@ public class UpdateError extends Throwable {
          */
         public static final int INSTALL_FAILED = 5000;
 
+        // 本地安装的apkMD5不正确
+        public static final int FAIL_OLD_MD5 = 5001;
+
+        // 新生成的apkMD5不正确
+        public static final int FAIL_GEN_MD5 = 5002;
+
+        // 合成失败
+        public static final int FAIL_PATCH = 5003;
+
+        // 获取源文件失败
+        public static final  int FAIL_GET_SOURCE = 5004;
         /**
          * 未知的错误
          */
@@ -123,22 +134,22 @@ public class UpdateError extends Throwable {
      * @param context
      */
     public static void init(Context context) {
-        sMessages.append(ERROR.CHECK_NET_REQUEST, context.getString(R.string.xupdate_error_check_net_request));
-        sMessages.append(ERROR.CHECK_NO_WIFI, context.getString(R.string.xupdate_error_check_no_wifi));
-        sMessages.append(ERROR.CHECK_NO_NETWORK, context.getString(R.string.xupdate_error_check_no_network));
-        sMessages.append(ERROR.CHECK_UPDATING, context.getString(R.string.xupdate_error_check_updating));
-        sMessages.append(ERROR.CHECK_NO_NEW_VERSION, context.getString(R.string.xupdate_error_check_no_new_version));
-        sMessages.append(ERROR.CHECK_JSON_EMPTY, context.getString(R.string.xupdate_error_check_json_empty));
-        sMessages.append(ERROR.CHECK_PARSE, context.getString(R.string.xupdate_error_check_parse));
-        sMessages.append(ERROR.CHECK_IGNORED_VERSION, context.getString(R.string.xupdate_error_check_ignored_version));
-        sMessages.append(ERROR.CHECK_APK_CACHE_DIR_EMPTY, context.getString(R.string.xupdate_error_check_apk_cache_dir_empty));
+        sMessages.append(ERROR.CHECK_NET_REQUEST, context.getString(R.string.space_error_check_net_request));
+        sMessages.append(ERROR.CHECK_NO_WIFI, context.getString(R.string.space_error_check_no_wifi));
+        sMessages.append(ERROR.CHECK_NO_NETWORK, context.getString(R.string.space_error_check_no_network));
+        sMessages.append(ERROR.CHECK_UPDATING, context.getString(R.string.space_error_check_updating));
+        sMessages.append(ERROR.CHECK_NO_NEW_VERSION, context.getString(R.string.space_error_check_no_new_version));
+        sMessages.append(ERROR.CHECK_JSON_EMPTY, context.getString(R.string.space_error_check_json_empty));
+        sMessages.append(ERROR.CHECK_PARSE, context.getString(R.string.space_error_check_parse));
+        sMessages.append(ERROR.CHECK_IGNORED_VERSION, context.getString(R.string.space_error_check_ignored_version));
+        sMessages.append(ERROR.CHECK_APK_CACHE_DIR_EMPTY, context.getString(R.string.space_error_check_apk_cache_dir_empty));
 
-        sMessages.append(ERROR.PROMPT_UNKNOWN, context.getString(R.string.xupdate_error_prompt_unknown));
-        sMessages.append(ERROR.PROMPT_ACTIVITY_DESTROY, context.getString(R.string.xupdate_error_prompt_activity_destroy));
+        sMessages.append(ERROR.PROMPT_UNKNOWN, context.getString(R.string.space_error_prompt_unknown));
+        sMessages.append(ERROR.PROMPT_ACTIVITY_DESTROY, context.getString(R.string.space_error_prompt_activity_destroy));
 
-        sMessages.append(ERROR.DOWNLOAD_FAILED, context.getString(R.string.xupdate_error_download_failed));
-        sMessages.append(ERROR.DOWNLOAD_PERMISSION_DENIED, context.getString(R.string.xupdate_error_download_permission_denied));
+        sMessages.append(ERROR.DOWNLOAD_FAILED, context.getString(R.string.space_error_download_failed));
+        sMessages.append(ERROR.DOWNLOAD_PERMISSION_DENIED, context.getString(R.string.space_error_download_permission_denied));
 
-        sMessages.append(ERROR.INSTALL_FAILED, context.getString(R.string.xupdate_error_install_failed));
+        sMessages.append(ERROR.INSTALL_FAILED, context.getString(R.string.space_error_install_failed));
     }
 }

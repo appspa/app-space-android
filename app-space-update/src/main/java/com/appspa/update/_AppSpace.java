@@ -36,9 +36,10 @@ import com.appspa.update.proxy.IUpdateHttpService;
 import com.appspa.update.proxy.IUpdateParser;
 import com.appspa.update.proxy.IUpdatePrompter;
 import com.appspa.update.proxy.impl.DefaultFileEncryptor;
-import com.appspa.update.utils.ApkInstallUtils;
+import com.appspa.update.utils.ApkUtils;
 import com.appspa.update.listener.impl.DefaultInstallListener;
 import com.appspa.update.listener.impl.DefaultUpdateFailureListener;
+import com.appspa.update.utils.PatchUtils;
 
 import java.io.File;
 import java.util.Map;
@@ -247,8 +248,8 @@ public final class _AppSpace {
     /**
      * 开始安装apk文件
      *
-     * @param context 传activity可以获取安装的返回值，详见{@link ApkInstallUtils#REQUEST_CODE_INSTALL_APP}
-     * @param apkFile apk文件
+     * @param context 传activity可以获取安装的返回值，详见{@link ApkUtils#REQUEST_CODE_INSTALL_APP}
+     * @param apkFile apk/patch文件
      */
     public static void startInstallApk(@NonNull Context context, @NonNull File apkFile) {
         startInstallApk(context, apkFile, new DownloadEntity());
@@ -257,8 +258,8 @@ public final class _AppSpace {
     /**
      * 开始安装apk文件
      *
-     * @param context        传activity可以获取安装的返回值，详见{@link ApkInstallUtils#REQUEST_CODE_INSTALL_APP}
-     * @param apkFile        apk文件
+     * @param context        传activity可以获取安装的返回值，详见{@link ApkUtils#REQUEST_CODE_INSTALL_APP}
+     * @param apkFile        apk/patch文件
      * @param downloadEntity 文件下载信息
      */
     public static void startInstallApk(@NonNull Context context, @NonNull File apkFile, @NonNull DownloadEntity downloadEntity) {
@@ -273,7 +274,7 @@ public final class _AppSpace {
     /**
      * 安装apk
      *
-     * @param context        传activity可以获取安装的返回值，详见{@link ApkInstallUtils#REQUEST_CODE_INSTALL_APP}
+     * @param context        传activity可以获取安装的返回值，详见{@link ApkUtils#REQUEST_CODE_INSTALL_APP}
      * @param apkFile        apk文件
      * @param downloadEntity 文件下载信息
      */

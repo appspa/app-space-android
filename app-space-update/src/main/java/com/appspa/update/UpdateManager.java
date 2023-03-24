@@ -80,7 +80,7 @@ public class UpdateManager implements IUpdateProxy {
     /**
      * apk缓存的目录
      */
-    private final String mApkCacheDir;
+    private final String mCacheDir;
 
     //===========更新模式================//
     /**
@@ -134,7 +134,7 @@ public class UpdateManager implements IUpdateProxy {
         mContext = new WeakReference<>(builder.context);
         mUpdateUrl = builder.updateUrl;
         mParams = builder.params;
-        mApkCacheDir = builder.apkCacheDir;
+        mCacheDir = builder.apkCacheDir;
 
         mIsWifiOnly = builder.isWifiOnly;
         mIsGet = builder.isGet;
@@ -309,7 +309,7 @@ public class UpdateManager implements IUpdateProxy {
     private UpdateEntity refreshParams(UpdateEntity updateEntity) {
         //更新信息（本地信息）
         if (updateEntity != null) {
-            updateEntity.setApkCacheDir(mApkCacheDir);
+            updateEntity.setCacheDir(mCacheDir);
             updateEntity.setIsAutoMode(mIsAutoMode);
             updateEntity.setIUpdateHttpService(mIUpdateHttpService);
         }
@@ -431,7 +431,9 @@ public class UpdateManager implements IUpdateProxy {
      * @param downloadListener 下载监听
      */
     public void download(String downloadUrl, @Nullable OnFileDownloadListener downloadListener) {
-        startDownload(refreshParams(new UpdateEntity().setDownloadUrl(downloadUrl)), downloadListener);
+        UpdateEntity updateEntity = new UpdateEntity();
+        updateEntity.getDownLoadEntity().setDownloadUrl(downloadUrl);
+        startDownload(refreshParams(updateEntity), downloadListener);
     }
 
     /**
@@ -864,7 +866,7 @@ public class UpdateManager implements IUpdateProxy {
         return "XUpdate{" +
                 "mUpdateUrl='" + mUpdateUrl + '\'' +
                 ", mParams=" + mParams +
-                ", mApkCacheDir='" + mApkCacheDir + '\'' +
+                ", mApkCacheDir='" + mCacheDir + '\'' +
                 ", mIsWifiOnly=" + mIsWifiOnly +
                 ", mIsGet=" + mIsGet +
                 ", mIsAutoMode=" + mIsAutoMode +

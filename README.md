@@ -103,7 +103,7 @@ IUpdateProxy/XUpdate --- (update) ---> IUpdateChecker --->（Request the server 
                                                         ---> Click cancel or ignore ---> End
 ```
 
-[Click to view the framework UML design diagram](https://github.com/xuexiangjys/XUpdate/blob/master/img/xupdate_uml.png)
+[Click to view the framework UML design diagram](https://github.com/xuexiangjys/XUpdate/blob/master/img/space_uml.png)
 
 ---
 
@@ -111,27 +111,27 @@ IUpdateProxy/XUpdate --- (update) ---> IUpdateChecker --->（Request the server 
 
 * Default version update
 
-![xupdate_default.png](./img/xupdate_default.png)
+![space_default.png](./img/space_default.png)
 
 * Background update
 
-![xupdate_background.png](./img/xupdate_background.png)
+![space_background.png](./img/space_background.png)
 
 * Force version update
 
-![xupdate_force.png](./img/xupdate_force.png)
+![space_force.png](./img/space_force.png)
 
 * Ignored version update
 
-![xupdate_ignore.png](./img/xupdate_ignore.png)
+![space_ignore.png](./img/space_ignore.png)
 
 * Custom pop up theme
 
-![xupdate_custom.png](./img/xupdate_custom.png)
+![space_custom.png](./img/space_custom.png)
 
 * Use the system pop-up prompt
 
-![xupdate_system.png](./img/xupdate_system.png)
+![space_system.png](./img/space_system.png)
 
 ### Demo update background service
 
@@ -145,13 +145,13 @@ Because GitHub is slow to visit recently, if you need to experience xupdate bett
 
 [![downloads](https://img.shields.io/badge/downloads-2.1M-blue.svg)](https://www.pgyer.com/xupdate)
 
-[![xupdate_download_pugongying.png](./img/download_pugongying.png)](https://www.pgyer.com/xupdate)
+[![space_download_pugongying.png](./img/download_pugongying.png)](https://www.pgyer.com/xupdate)
 
 #### GitHub Download
 
-[![downloads](https://img.shields.io/badge/downloads-2.1M-blue.svg)](https://github.com/xuexiangjys/XUpdate/blob/master/apk/xupdate_demo_1.0.apk?raw=true)
+[![downloads](https://img.shields.io/badge/downloads-2.1M-blue.svg)](https://github.com/xuexiangjys/XUpdate/blob/master/apk/space_demo_1.0.apk?raw=true)
 
-[![xupdate_download.png](./img/download.png)](https://github.com/xuexiangjys/XUpdate/blob/master/apk/xupdate_demo_1.0.apk?raw=true)
+[![space_download.png](./img/download.png)](https://github.com/xuexiangjys/XUpdate/blob/master/apk/space_demo_1.0.apk?raw=true)
 
 ---
 
@@ -262,8 +262,8 @@ mIsShowNotification | boolean | false | Whether to show download progress in the
 
 Field name | Type | Default value | Description
 :-|:-:|:-:|:-
-mThemeColor | int | R.color.xupdate_default_theme_color | Theme colors (background colors for progress bars and buttons)
-mTopResId | int | R.drawable.xupdate_bg_app_top | Top background image resource ID
+mThemeColor | int | R.color.space_default_theme_color | Theme colors (background colors for progress bars and buttons)
+mTopResId | int | R.drawable.space_bg_app_top | Top background image resource ID
 mTopDrawableTag | String | "" | Top background image drawable tag
 mButtonTextColor | int | 0 | Button text color
 mSupportBackgroundUpdate | boolean | false | Whether background updates are supported
@@ -335,7 +335,7 @@ It should be noted that with the default version update, the JSON format returne
   "VersionCode": 3,
   "VersionName": "1.0.2",
   "ModifyContent": "1、优化api接口。\r\n2、添加使用demo演示。\r\n3、新增自定义更新服务API接口。\r\n4、优化更新提示界面。",
-  "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUpdate/master/apk/xupdate_demo_1.0.2.apk",
+  "DownloadUrl": "https://raw.githubusercontent.com/xuexiangjys/XUpdate/master/apk/space_demo_1.0.2.apk",
   "ApkSize": 2048,
   "ApkMd5": ""
 }
@@ -566,7 +566,7 @@ If your APK installation is different, you can implement your own APK installer.
 
 Due to the limited level of the author, only Chinese and English are supported【the default language is English】. If you need to support other languages, you only need to create a new corresponding language file under the `res` of your own project to translate in multiple languages.
 
-Please refer to ***[xupdate_strings.xml](https://github.com/xuexiangjys/XUpdate/blob/master/xupdate-lib/src/main/res/values-zh-rCN/xupdate_strings.xml)***。
+Please refer to ***[space_strings.xml](https://github.com/xuexiangjys/XUpdate/blob/master/xupdate-lib/src/main/res/values-zh-rCN/space_strings.xml)***。
 
 What? You don't know Android's multilingual configuration yet? I suggest you take a look at this article：[Android项目国际化多国语言适配](https://blog.csdn.net/qq_29769851/article/details/90606437)
 
@@ -576,7 +576,7 @@ What? You don't know Android's multilingual configuration yet? I suggest you tak
 -keep class com.xuexiang.xupdate.entity.** { *; }
 
 // Note: if you use a custom API parser for parsing, you need to add confusion to your custom API entities. Here are the custom API entity obfuscation rules configured in this demo:
--keep class com.xuexiang.xupdatedemo.entity.** { *; }
+-keep class com.appspa.demo.entity.** { *; }
 
 ```
 
