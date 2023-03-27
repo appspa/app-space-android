@@ -1,0 +1,42 @@
+{
+  "stringTable": {},
+  "buildFiles": [
+    "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/cuichenxi/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+      "-C",
+      "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/cuichenxi/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+    "-C",
+    "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "patch-lib-Debug-x86": {
+      "buildCommandComponents": [
+        "/Users/cuichenxi/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+        "-C",
+        "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/x86",
+        "patch-lib"
+      ],
+      "buildType": "debug",
+      "abi": "x86",
+      "artifactName": "patch-lib",
+      "output": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/build/intermediates/cmake/debug/obj/x86/libpatch-lib.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {},
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

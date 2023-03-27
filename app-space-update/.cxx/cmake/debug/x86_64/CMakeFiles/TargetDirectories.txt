@@ -1,0 +1,3 @@
+/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/x86_64/CMakeFiles/rebuild_cache.dir
+/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/x86_64/CMakeFiles/edit_cache.dir
+/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/x86_64/CMakeFiles/patch-lib.dir

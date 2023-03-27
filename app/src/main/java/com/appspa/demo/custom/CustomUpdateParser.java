@@ -29,7 +29,7 @@ import com.xuexiang.xutil.net.JsonUtil;
  * 自定义更新解析器
  *
  * @author treexi
- * @since 2018/7/12 下午3:46
+ * @since 2023/3/25 下午3:46
  */
 public class CustomUpdateParser implements IUpdateParser {
     @Override
@@ -42,13 +42,13 @@ public class CustomUpdateParser implements IUpdateParser {
         if (result != null && result.success && result.data != null) {
             CustomResult.VersionInfo data = result.data;
             DownloadEntity mPatchDownloadEntity = null;
-            if (data.patchInfo != null) {
+            if (data.patchInfo != null && data.patchInfo.downloadUrl != null) {
                 mPatchDownloadEntity = new DownloadEntity();
                 mPatchDownloadEntity.setDownloadUrl(data.patchInfo.downloadUrl);
                 mPatchDownloadEntity.setTip(data.patchInfo.tip);
                 mPatchDownloadEntity.setSize(data.patchInfo.size);
                 mPatchDownloadEntity.setMd5(data.patchInfo.md5);
-                mPatchDownloadEntity.setWholeMd5(data.patchInfo.md5);
+                mPatchDownloadEntity.setWholeMd5(data.md5);
                 mPatchDownloadEntity.setSVersionCode(data.patchInfo.sVersionCode);
                 mPatchDownloadEntity.setTVersionCode(data.patchInfo.tVersionCode);
             }
@@ -60,6 +60,7 @@ public class CustomUpdateParser implements IUpdateParser {
                     .setHasUpdate(true)
                     .setForce(data.isForce)
                     .setIsIgnorable(data.isIgnorable)
+                    .setIsSilent(data.isSilent)
                     .setVersionCode(data.versionCode)
                     .setVersionName(data.versionName)
                     .setUpdateContent(data.changeLog)

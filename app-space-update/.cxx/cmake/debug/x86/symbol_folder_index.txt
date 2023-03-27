@@ -1,0 +1,1 @@
+/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/build/intermediates/cmake/debug/obj/x86

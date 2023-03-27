@@ -1,0 +1,67 @@
+[
+{
+  "directory": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dpatch_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/patch-lib.dir/patch-lib.cpp.o -c /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/patch-lib.cpp",
+  "file": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/patch-lib.cpp"
+},
+
+{
+  "directory": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dpatch_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/patch-lib.dir/patchUtils.c.o   -c /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/patchUtils.c",
+  "file": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/patchUtils.c"
+},
+
+{
+  "directory": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dpatch_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/patch-lib.dir/bzip2/blocksort.c.o   -c /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/blocksort.c",
+  "file": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/blocksort.c"
+},
+
+{
+  "directory": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dpatch_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/patch-lib.dir/bzip2/bzip2.c.o   -c /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/bzip2.c",
+  "file": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/bzip2.c"
+},
+
+{
+  "directory": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dpatch_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/patch-lib.dir/bzip2/bzip2recover.c.o   -c /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/bzip2recover.c",
+  "file": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/bzip2recover.c"
+},
+
+{
+  "directory": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dpatch_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/patch-lib.dir/bzip2/bzlib.c.o   -c /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/bzlib.c",
+  "file": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/bzlib.c"
+},
+
+{
+  "directory": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dpatch_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/patch-lib.dir/bzip2/compress.c.o   -c /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/compress.c",
+  "file": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/compress.c"
+},
+
+{
+  "directory": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dpatch_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/patch-lib.dir/bzip2/crctable.c.o   -c /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/crctable.c",
+  "file": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/crctable.c"
+},
+
+{
+  "directory": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dpatch_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/patch-lib.dir/bzip2/decompress.c.o   -c /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/decompress.c",
+  "file": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/decompress.c"
+},
+
+{
+  "directory": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dpatch_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/patch-lib.dir/bzip2/huffman.c.o   -c /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/huffman.c",
+  "file": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/huffman.c"
+},
+
+{
+  "directory": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/cuichenxi/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dpatch_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/patch-lib.dir/bzip2/randtable.c.o   -c /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/randtable.c",
+  "file": "/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/src/main/cpp/bzip2/randtable.c"
+}
+]

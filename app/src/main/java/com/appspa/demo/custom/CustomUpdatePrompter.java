@@ -35,7 +35,7 @@ import java.io.File;
  * 自定义版本更新提示器
  *
  * @author treexi
- * @since 2018/7/12 下午3:48
+ * @since 2023/3/25 下午3:48
  */
 public class CustomUpdatePrompter implements IUpdatePrompter {
 

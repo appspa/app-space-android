@@ -1,0 +1,13 @@
+ninja: Entering directory `/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/x86_64'
+[1/12] Building C object CMakeFiles/patch-lib.dir/bzip2/bzip2recover.c.o
+[2/12] Building C object CMakeFiles/patch-lib.dir/bzip2/randtable.c.o
+[3/12] Building C object CMakeFiles/patch-lib.dir/bzip2/crctable.c.o
+[4/12] Building C object CMakeFiles/patch-lib.dir/bzip2/huffman.c.o
+[5/12] Building C object CMakeFiles/patch-lib.dir/patchUtils.c.o
+[6/12] Building C object CMakeFiles/patch-lib.dir/bzip2/blocksort.c.o
+[7/12] Building C object CMakeFiles/patch-lib.dir/bzip2/compress.c.o
+[8/12] Building C object CMakeFiles/patch-lib.dir/bzip2/decompress.c.o
+[9/12] Building C object CMakeFiles/patch-lib.dir/bzip2/bzlib.c.o
+[10/12] Building C object CMakeFiles/patch-lib.dir/bzip2/bzip2.c.o
+[11/12] Building CXX object CMakeFiles/patch-lib.dir/patch-lib.cpp.o
+[12/12] Linking CXX shared library /Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/build/intermediates/cmake/debug/obj/x86_64/libpatch-lib.so

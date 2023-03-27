@@ -1,0 +1,13 @@
+# ninja log v5
+3	348	1679638060	CMakeFiles/patch-lib.dir/bzip2/bzip2recover.c.o	605764a20d45751
+16	353	1679638060	CMakeFiles/patch-lib.dir/bzip2/randtable.c.o	adf437dced511700
+8	355	1679638060	CMakeFiles/patch-lib.dir/bzip2/crctable.c.o	3b29a9eaadbbfae6
+14	362	1679638060	CMakeFiles/patch-lib.dir/bzip2/huffman.c.o	eeb4f79308eeb9b6
+1	408	1679638060	CMakeFiles/patch-lib.dir/patchUtils.c.o	42db308e26a7d4cd
+2	413	1679638060	CMakeFiles/patch-lib.dir/bzip2/blocksort.c.o	b1fd20de16fbb9a4
+6	420	1679638060	CMakeFiles/patch-lib.dir/bzip2/compress.c.o	8d6b43bc6fb41e2
+11	446	1679638060	CMakeFiles/patch-lib.dir/bzip2/decompress.c.o	5e36be4a2f8378ca
+4	489	1679638060	CMakeFiles/patch-lib.dir/bzip2/bzlib.c.o	127bc5007cebb357
+3	520	1679638060	CMakeFiles/patch-lib.dir/bzip2/bzip2.c.o	d96acd37a8d6f2ef
+1	825	1679638061	CMakeFiles/patch-lib.dir/patch-lib.cpp.o	bc72c47baac9af31
+825	915	1679638061	/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/build/intermediates/cmake/debug/obj/x86_64/libpatch-lib.so	40963ad8f544499c

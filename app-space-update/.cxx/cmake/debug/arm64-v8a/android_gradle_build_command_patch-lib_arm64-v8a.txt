@@ -1,0 +1,7 @@
+Executable : /Users/cuichenxi/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja
+arguments : 
+-C
+/Users/cuichenxi/Desktop/work/code-trace/spa/app-space-android/app-space-update/.cxx/cmake/debug/arm64-v8a
+patch-lib
+jvmArgs : 
+
