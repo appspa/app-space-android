@@ -426,7 +426,7 @@ public class UpdateDialog extends BaseDialog implements View.OnClickListener, ID
     }
 
     private void onInstallApk() {
-        _AppSpace.startInstallApk(getContext(), UpdateUtils.getApkFileByUpdateEntity(mUpdateEntity), mUpdateEntity.getDownLoadEntity());
+        _AppSpace.startInstallApk(getContext(), UpdateUtils.getApkFileByUpdateEntity(mUpdateEntity), mUpdateEntity.getCurDownloadEntity());
     }
 
     @Override

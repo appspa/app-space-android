@@ -27,7 +27,7 @@ public final class Constants {
 
     public static final String FORCED_UPDATE_URL = "https://gitee.com/xuexiangjys/XUpdate/raw/master/jsonapi/update_forced.json";
 
-    public static final String CUSTOM_UPDATE_URL = "http://10.151.100.79/api/app/checkupdate";
+    public static final String CUSTOM_UPDATE_URL = "http://10.151.100.79:8085/api/app/checkupdate";
 
     public static final String IGNORE_UPDATE_URL = "https://gitee.com/xuexiangjys/XUpdate/raw/master/jsonapi/update_ignore.json";
 

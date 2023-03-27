@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.UpdateActivity" />
     </application>
 
 </manifest>

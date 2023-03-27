@@ -60,7 +60,7 @@ public final class UpdateUtils {
     private static final String IGNORE_VERSION = "space_ignore_version";
     private static final String PREFS_FILE = "space_prefs";
 
-    private static final String KEY_XUPDATE = "xupdate";
+    private static final String KEY_SPA = "app_space";
 
     private UpdateUtils() {
         throw new UnsupportedOperationException("cannot be instantiated");
@@ -148,7 +148,16 @@ public final class UpdateUtils {
         PackageInfo packageInfo = getPackageInfo(context);
         return packageInfo != null ? packageInfo.versionCode : -1;
     }
-
+    /**
+     * 获取应用的currenMd5
+     *
+     * @param context
+     * @return
+     */
+    public static String getBaseApkMd5(Context context) {
+        String baseApkSource = ApkUtils.getSourceApkPath(context, context.getPackageName());
+        return _AppSpace.encryptFile(FileUtils.getFileByPath(baseApkSource));
+    }
     /**
      * 获取应用的VersionName
      *
@@ -310,7 +319,7 @@ public final class UpdateUtils {
      */
     public static boolean isApkDownloaded(UpdateEntity updateEntity) {
         File appFile = getApkFileByUpdateEntity(updateEntity);
-        String md5 = updateEntity.getDownLoadEntity().getMd5();
+        String md5 = updateEntity.getCurDownloadEntity().getWholeMd5();
         return !TextUtils.isEmpty(md5)
                 && FileUtils.isFileExists(appFile)
                 && _AppSpace.isFileValid(md5, appFile);
@@ -387,7 +396,7 @@ public final class UpdateUtils {
      * @return 版本更新的默认缓存路径
      */
     public static String getDefaultDiskCacheDirPath() {
-        return UpdateUtils.getDiskCacheDir(AppSpace.getContext(), KEY_XUPDATE);
+        return UpdateUtils.getDiskCacheDir(AppSpace.getContext(), KEY_SPA);
     }
 
     private static boolean isSDCardEnable() {

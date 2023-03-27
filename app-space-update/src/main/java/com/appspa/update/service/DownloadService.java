@@ -304,7 +304,7 @@ public class DownloadService extends Service {
         private final Handler mMainHandler;
 
         FileDownloadCallBack(@NonNull UpdateEntity updateEntity, @Nullable OnFileDownloadListener listener) {
-            mDownloadEntity = updateEntity.getDownLoadEntity();
+            mDownloadEntity = updateEntity.getCurDownloadEntity();
             mIsAutoInstall = updateEntity.isAutoInstall();
             mOnFileDownloadListener = listener;
             mMainHandler = new Handler(Looper.getMainLooper());

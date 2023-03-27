@@ -23,7 +23,7 @@ import com.appspa.update.entity.UpdateEntity;
 import com.appspa.update.listener.IUpdateParseCallback;
 import com.appspa.update.proxy.IUpdateParser;
 import com.appspa.demo.entity.CustomResult;
-import com.xuexiang.xutil.net.JsonUtil;
+import com.google.gson.Gson;
 
 /**
  * 自定义更新解析器
@@ -38,7 +38,7 @@ public class CustomUpdateParser implements IUpdateParser {
     }
 
     private UpdateEntity getParseResult(String json) {
-        CustomResult result = JsonUtil.fromJson(json, CustomResult.class);
+        CustomResult result = new Gson().fromJson(json, CustomResult.class);
         if (result != null && result.success && result.data != null) {
             CustomResult.VersionInfo data = result.data;
             DownloadEntity mPatchDownloadEntity = null;
@@ -48,9 +48,8 @@ public class CustomUpdateParser implements IUpdateParser {
                 mPatchDownloadEntity.setTip(data.patchInfo.tip);
                 mPatchDownloadEntity.setSize(data.patchInfo.size);
                 mPatchDownloadEntity.setMd5(data.patchInfo.md5);
-                mPatchDownloadEntity.setWholeMd5(data.md5);
-                mPatchDownloadEntity.setSVersionCode(data.patchInfo.sVersionCode);
-                mPatchDownloadEntity.setTVersionCode(data.patchInfo.tVersionCode);
+                mPatchDownloadEntity.setWholeMd5(data.patchInfo.tMd5);
+                mPatchDownloadEntity.setIsPatch(true);
             }
             DownloadEntity downloadEntity = new DownloadEntity();
             downloadEntity.setMd5(data.md5);

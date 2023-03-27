@@ -19,19 +19,17 @@ package com.appspa.demo.utils;
 import android.content.Context;
 
 import com.appspa.demo.R;
-import com.xuexiang.xutil.XUtil;
-import com.xuexiang.xutil.data.BaseSPUtil;
 
 /**
  * @author treexi
  * @since 2018/7/30 上午11:48
  */
-public class SettingSPUtils extends BaseSPUtil {
+public class SettingSPUtils  {
 
     private static SettingSPUtils sInstance;
 
-    private SettingSPUtils(Context context) {
-        super(context);
+    private SettingSPUtils() {
+
     }
 
     /**
@@ -42,7 +40,7 @@ public class SettingSPUtils extends BaseSPUtil {
         if (sInstance == null) {
             synchronized (SettingSPUtils.class) {
                 if (sInstance == null) {
-                    sInstance = new SettingSPUtils(XUtil.getContext());
+                    sInstance = new SettingSPUtils();
                 }
             }
         }
@@ -56,7 +54,8 @@ public class SettingSPUtils extends BaseSPUtil {
      * @return
      */
     public String getServiceURL() {
-        return getString(getString(R.string.service_api_key), getString(R.string.default_service_api));
+        return "";
+//        return getString(getString(R.string.service_api_key), getString(R.string.default_service_api));
     }
 
     /**
@@ -65,7 +64,8 @@ public class SettingSPUtils extends BaseSPUtil {
      * @return
      */
     public boolean setServiceURL(String apiUrl) {
-        return putString(getString(R.string.service_api_key), apiUrl);
+        return true;
+//        return putString(getString(R.string.service_api_key), apiUrl);
     }
 
 

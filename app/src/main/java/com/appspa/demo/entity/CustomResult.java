@@ -61,10 +61,10 @@ public class CustomResult implements Serializable {
 
         //md5用户文件校验
         public String md5;
-        //版本code
-        public int sVersionCode;
-        //版本code
-        public int tVersionCode;
+        //当前请求md5
+        public String sMd5;
+        //目标版本md5
+        public String tMd5;
         //说明
         public String tip;
         //下载Url

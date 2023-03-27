@@ -18,6 +18,7 @@ package com.appspa.update.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 import com.appspa.update._AppSpace;
 
@@ -57,14 +58,6 @@ public class DownloadEntity implements Parcelable {
      */
     private String mTip;
 
-    /**
-     * 增量包当前版本
-     */
-    private int sVersionCode;
-    /**
-     * 增量包目标版本
-     */
-    private int tVersionCode;
 
     private boolean isPatch;
 
@@ -79,8 +72,6 @@ public class DownloadEntity implements Parcelable {
         mSize = in.readLong();
         mIsShowNotification = in.readByte() != 0;
         mTip = in.readString();
-        sVersionCode = in.readInt();
-        tVersionCode = in.readInt();
         isPatch =  in.readByte() != 0;
     }
 
@@ -114,6 +105,9 @@ public class DownloadEntity implements Parcelable {
     }
 
     public String getWholeMd5() {
+        if (mWholeMd5 == null || TextUtils.isEmpty(mWholeMd5)) {
+            return mMd5;
+        }
         return mWholeMd5;
     }
 
@@ -144,15 +138,7 @@ public class DownloadEntity implements Parcelable {
         return this;
     }
 
-    public DownloadEntity setSVersionCode(int sVersionCode) {
-        this.sVersionCode = sVersionCode;
-        return this;
-    }
 
-    public DownloadEntity setTVersionCode(int tVersionCode) {
-        this.tVersionCode = tVersionCode;
-        return this;
-    }
 
     public DownloadEntity setIsPatch(boolean isPatch) {
         this.isPatch = isPatch;
@@ -199,8 +185,6 @@ public class DownloadEntity implements Parcelable {
         dest.writeLong(mSize);
         dest.writeByte((byte) (mIsShowNotification ? 1 : 0));
         dest.writeString(mTip);
-        dest.writeInt(sVersionCode);
-        dest.writeInt(tVersionCode);
         dest.writeByte((byte) (isPatch ? 1 : 0));
     }
 }

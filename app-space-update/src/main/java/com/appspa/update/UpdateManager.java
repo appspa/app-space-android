@@ -331,7 +331,7 @@ public class UpdateManager implements IUpdateProxy {
                 startDownload(updateEntity, mOnFileDownloadListener);
             } else {
                 //已经下载好的直接安装
-                _AppSpace.startInstallApk(getContext(), UpdateUtils.getApkFileByUpdateEntity(mUpdateEntity), mUpdateEntity.getDownLoadEntity());
+                _AppSpace.startInstallApk(getContext(), UpdateUtils.getApkFileByUpdateEntity(mUpdateEntity), mUpdateEntity.getCurDownloadEntity());
             }
         } else {
             if (mUpdateProxy != null) {
@@ -432,7 +432,7 @@ public class UpdateManager implements IUpdateProxy {
      */
     public void download(String downloadUrl, @Nullable OnFileDownloadListener downloadListener) {
         UpdateEntity updateEntity = new UpdateEntity();
-        updateEntity.getDownLoadEntity().setDownloadUrl(downloadUrl);
+        updateEntity.getCurDownloadEntity().setDownloadUrl(downloadUrl);
         startDownload(refreshParams(updateEntity), downloadListener);
     }
 

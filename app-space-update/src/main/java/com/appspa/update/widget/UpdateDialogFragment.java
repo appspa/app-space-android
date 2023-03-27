@@ -489,7 +489,7 @@ public class UpdateDialogFragment extends DialogFragment implements View.OnClick
     }
 
     private void onInstallApk() {
-        _AppSpace.startInstallApk(getContext(), UpdateUtils.getApkFileByUpdateEntity(mUpdateEntity), mUpdateEntity.getDownLoadEntity());
+        _AppSpace.startInstallApk(getContext(), UpdateUtils.getApkFileByUpdateEntity(mUpdateEntity), mUpdateEntity.getCurDownloadEntity());
     }
 
     /**

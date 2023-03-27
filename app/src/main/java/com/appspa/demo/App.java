@@ -17,23 +17,15 @@
 package com.appspa.demo;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import com.appspa.update.AppSpace;
 import com.appspa.update.entity.UpdateError;
 import com.appspa.update.listener.OnUpdateFailureListener;
 import com.appspa.update.utils.UpdateUtils;
 import com.appspa.demo.http.OKHttpUpdateHttpService;
-import com.xuexiang.xaop.XAOP;
-import com.xuexiang.xaop.util.PermissionUtils;
-import com.xuexiang.xhttp2.XHttp;
-import com.xuexiang.xhttp2.XHttpSDK;
-import com.xuexiang.xpage.PageConfig;
-import com.xuexiang.xutil.XUtil;
-import com.xuexiang.xutil.common.StringUtils;
-import com.xuexiang.xutil.tip.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -47,29 +39,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        XUtil.debug(true);
-
-        PageConfig.getInstance()
-                .debug("PageLog")
-                .init(this);
-
-        // 初始化插件
-        XAOP.init(this);
-        // 日志打印切片开启
-        XAOP.debug(true);
-        //设置动态申请权限切片 申请权限被拒绝的事件响应监听
-        XAOP.setOnPermissionDeniedListener(new PermissionUtils.OnPermissionDeniedListener() {
-            @Override
-            public void onDenied(List<String> permissionsDenied) {
-                ToastUtils.toast("权限申请被拒绝:" + StringUtils.listToString(permissionsDenied, ","));
-            }
-
-        });
-
-        initXHttp();
-
         initOKHttpUtils();
-
         initUpdate();
     }
 
@@ -83,8 +53,9 @@ public class App extends Application {
                 //默认设置非自动模式，可根据具体使用配置
                 .isAutoMode(false)
                 //设置默认公共请求参数
-                .param("versionCode", UpdateUtils.getVersionCode(this))
-                .param("appKey", "64195459f44272b3183f8e61")
+                .param("currentMd5", UpdateUtils.getBaseApkMd5(this))//差量更新使用
+                .param("currentVersionCode", UpdateUtils.getVersionCode(this))
+                .param("appKey", "641d82026c4a440df47b6be7")
 //                .param("appKey", getPackageName())
                 //设置版本更新出错的监听
                 .setOnUpdateFailureListener(new OnUpdateFailureListener() {
@@ -93,7 +64,7 @@ public class App extends Application {
                         error.printStackTrace();
                         //对不同错误进行处理
                         if (error.getCode() != UpdateError.ERROR.CHECK_NO_NEW_VERSION) {
-                            ToastUtils.toast(error.toString());
+                            Toast.makeText(App.this, error.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
@@ -106,13 +77,6 @@ public class App extends Application {
 
     }
 
-    private void initXHttp() {
-        //初始化网络请求框架，必须首先执行
-        XHttpSDK.init(this);
-        //需要调试的时候执行
-        XHttpSDK.debug("XHttp");
-        XHttp.getInstance().setTimeout(20000);
-    }
 
     private void initOKHttpUtils() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()

@@ -19,7 +19,6 @@ package com.appspa.demo.http;
 import androidx.annotation.NonNull;
 
 import com.appspa.update.proxy.IUpdateHttpService;
-import com.xuexiang.xutil.net.JsonUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.FileCallBack;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -30,7 +29,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import okhttp3.Call;
-import okhttp3.MediaType;
 import okhttp3.Request;
 
 /**
@@ -54,12 +52,9 @@ public class OKHttpUpdateHttpService implements IUpdateHttpService {
 
     @Override
     public void asyncGet(@NonNull String url, @NonNull Map<String, Object> params, final @NonNull Callback callBack) {
-        Object appKey =  params.get("appKey");
-        Object versionCode =  params.get("versionCode");
         OkHttpUtils.get()
 //                .url(url + '/' + appKey + '/' + versionCode)
-                .url(url)
-//                .params(transform(params))
+                .params(transform(params))
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -76,32 +71,7 @@ public class OKHttpUpdateHttpService implements IUpdateHttpService {
 
     @Override
     public void asyncPost(@NonNull String url, @NonNull Map<String, Object> params, final @NonNull Callback callBack) {
-        //这里默认post的是Form格式，使用json格式的请修改 post -> postString
-        RequestCall requestCall;
-        if (mIsPostJson) {
-            requestCall = OkHttpUtils.postString()
-                    .url(url)
-                    .content(JsonUtil.toJson(params))
-                    .mediaType(MediaType.parse("application/json; charset=utf-8"))
-                    .build();
-        } else {
-            requestCall = OkHttpUtils.post()
-                    .url(url)
-                    .params(transform(params))
-                    .build();
-        }
-        requestCall
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        callBack.onError(e);
-                    }
 
-                    @Override
-                    public void onResponse(String response, int id) {
-                        callBack.onSuccess(response);
-                    }
-                });
     }
 
     @Override
