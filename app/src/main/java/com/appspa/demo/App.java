@@ -55,7 +55,7 @@ public class App extends Application {
                 //设置默认公共请求参数
                 .param("currentMd5", UpdateUtils.getBaseApkMd5(this))//差量更新使用
                 .param("currentVersionCode", UpdateUtils.getVersionCode(this))
-                .param("appKey", "641d82026c4a440df47b6be7")
+                .param("appId", "641d82026c4a440df47b6be7")
 //                .param("appKey", getPackageName())
                 //设置版本更新出错的监听
                 .setOnUpdateFailureListener(new OnUpdateFailureListener() {
