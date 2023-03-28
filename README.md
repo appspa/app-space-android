@@ -1,41 +1,8 @@
 # App-Space-Android
 
-## 简化使用
-
-想要更快地使用XUpdate，降低集成的难度，支持断点续传下载等拓展功能，可以尝试使用[XUpdateAPI](https://github.com/xuexiangjys/XUpdateAPI).
-
-## X系列库快速集成
-
-为了方便大家快速集成X系列框架库，我提供了一个空壳模版供大家参考使用: https://github.com/xuexiangjys/TemplateAppProject
-
----
-
-## 特征
-
-* 支持post和get两种版本检查方式，支持自定义网络请求。
-
-* 支持设置只在wifi下进行版本更新。
-
-* 支持静默下载（后台更新）、自动版本更新。
-
-* 提供界面友好的版本更新提示弹窗，可自定义其主题样式。
-
-* 支持自定义版本更新检查器、版本更新解析器、版本更新提示器、版本更新下载器、版本更新安装、出错处理。
-
-* 支持MD5文件校验、版本忽略、版本强制更新等功能。
-
-* 支持自定义文件校验方法【默认是MD5校验】。
-
-* 支持自定义请求API接口。
-
-* 兼容Android6.0～11.0。
-
 * 支持中文和英文两种语言显示（国际化）。
 
-* 支持Flutter插件使用：[flutter_xupdate](https://github.com/xuexiangjys/flutter_xupdate)。
-
-* 支持React-Native插件使用：[react-native-xupdate](https://github.com/xuexiangjys/react-native-xupdate)。
-
+* 支持Flutter插件使用：[app-space-flutter](https://github.com/appspa/app-space-flutter)。
 
 
 ## 1、快速集成指南
@@ -56,9 +23,7 @@ allprojects {
 
 2.然后在应用项目(一般是app)的 `build.gradle` 的 dependencies 添加:
 
-以下是版本说明，选择一个即可。
 
-* androidx版本：2.0.0及以上
 
 ```
 dependencies {
