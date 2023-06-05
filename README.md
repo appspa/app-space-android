@@ -40,6 +40,7 @@ dependencies {
 在Application进行初始化配置：
 
 ```
+
 AppSpace.get()
     .debug(true)
     .isWifiOnly(true)                                               //默认设置只在wifi下检查版本更新
