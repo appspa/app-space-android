@@ -52,7 +52,7 @@ AppSpace.get()
     .setOnUpdateFailureListener(new OnUpdateFailureListener() {     //设置版本更新出错的监听
         @Override
         public void onFailure(UpdateError error) {
-            if (error.getCode() != CHECK_NO_NEW_VERSION) {          //对不同错误进行处理
+            if (error.getCode() != CHECK_NO_NEW_VERSION) {          //对不同错误进行处理.
                 ToastUtils.toast(error.toString());
             }
         }
